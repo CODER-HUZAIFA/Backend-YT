@@ -96,14 +96,15 @@ main{
     /* position: relative; */
 }
 
-/* .cursor{
+.cursor{
     width: 20px;
     height: 20px;
     background-color: rgb(255, 115, 0);
     position: fixed;
     border-radius: 50%;
     z-index: 99;
-} */
+    transition: all ease 1;
+}
 
 .nav{
     width: 100vw;

@@ -1,5 +1,6 @@
 import express from "express"
 import cookieParser from "cookie-parser"
+import { User } from "./models/user.models.js"
 const app = express()
 
 app.use(express.json())
