@@ -12,4 +12,14 @@ app.get("/", (req, res) => {
     res.render("index")
 });
 
+app.post("/register", (res, req) => {
+    const user = new User({
+        username: req.body.username,
+        password: req.body.password
+    })
+
+    user.save().then((ur) => console.log(ur))
+    res.send({success: true})
+})
+
 export { app }

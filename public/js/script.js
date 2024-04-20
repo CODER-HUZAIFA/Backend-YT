@@ -59,17 +59,17 @@ document.querySelector(".cross").addEventListener("click", (e) => {
     formCont.style.display = "none"
 })
 
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-    let formCont2 = formCont
-    let username = document.querySelector("#username").value
-    let passsword = document.querySelector("#password").value
-    if (username == "" && passsword == ""){
-        alert("Insert Value")
-    }else{
-        alert("Thanks")
-        formCont2.style.display = "none"
-    }
-    username = ""
-    passsword = "" 
-});
+// loginForm.addEventListener("submit", (e) => {
+//     e.preventDefault()
+//     let formCont2 = formCont
+//     let username = document.querySelector("#username").value
+//     let passsword = document.querySelector("#password").value
+//     if (username == "" && passsword == ""){
+//         alert("Insert Value")
+//     }else{
+//         alert("Thanks")
+//         formCont2.style.display = "none"
+//     }
+//     username = ""
+//     passsword = "" 
+// });

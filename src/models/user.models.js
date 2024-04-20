@@ -4,15 +4,13 @@ const userSchema = mongoose.Schema({
     username: {
         type: String,
         require: true,
-        lowercase: true,
     },
     password: {
         type: String,
         require: true,
     },
     email: {
-        type: String,
-        require: true,
+        type: String
     },
     blogs: {
         type: mongoose.Schema.Types.ObjectId,
