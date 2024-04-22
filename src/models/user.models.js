@@ -12,6 +12,12 @@ const userSchema = mongoose.Schema({
     email: {
         type: String
     },
+    followers: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
     blogs: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Blog"
@@ -22,4 +28,6 @@ const userSchema = mongoose.Schema({
     }
 }, {timestamps: true});
 
-export const User = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema)
+
+export default User

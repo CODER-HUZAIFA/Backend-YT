@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --primary: rgb(248, 246, 244);
+    --secondary: rgb(255, 102, 0);
+}
+
+.nav{
+    width: 100vw;
+    height: 70px;
+    background-color: rgb(248, 246, 244);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    z-index: 110;
+    border-bottom: 1px solid black;
+}
+
+.nav .logo {
+    margin-left: 100px;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.nav .leftNav {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.nav .icons {
+    margin-right: 20px;
+}
+
+.nav #write {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.nav #notification {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.nav .icons {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+}
+
+.nav .profileImage img {
+    border-radius: 50%;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: white;
+}
+
+.main .mainLeft {
+    width: 70%;
+    height: 100%;
+    padding: 150px 100px;
+    /* border: 1px solid black; */
+}
+
+
+.main .mainRight {
+    width: 30%;
+    height: 100%;
+    padding: 110px 0px;
+    /* border: 1px solid rgb(0, 0, 0); */
+}   
+
+.mainLeft .profileName {
+    font-size: 29px;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+}
+
+.mainLeft .profileName p {
+    margin-bottom: 7px;
+    margin-left: 5px;
+}
+
+.mainLeft .blogWritten {
+    display: grid;
+    grid: auto;
+    grid-template-columns: repeat(3, 200px);
+    /* grid-gap: 10px; */
+}
+
+.mainLeft .blogWritten .blogs {
+    width: 150px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px 10px;
+    border: 1px solid black;
+}
+
+.blogs .img {
+    width: 100%;
+    height: 60%;
+    background-color: rgb(87, 86, 86);
+}
+
+.blogs .title {
+    padding: 5px 0px;
+    font-size: 15px;
+    color: black;
+    font-weight: 450;
+}
+
+.blogs .btn {
+    border: none;
+    padding: 4px 6px;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    background-color: var(--secondary);
+}
+
+.noBlogs {
+    width: 400px;
+    margin: 20px;
+}
+
+.mainRight > div {
+    width: 100%;
+    height: 300px;
+    padding: 10px 25px;
+    /* border: 1px solid blue; */
+}
+
+.mainRight .img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.mainRight .userName {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.mainRight .userFollowers {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+.mainRight .userDesc {
+    font-size: 13px;
+    width: 250px;
+    color: rgb(49, 49, 49);
+}
+
+.mainRight .rightBtn {
+    margin-top: 20px;
+}
+
+.rightBtn > * {
+    color: white;
+    font-weight: 500;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 2px;
+    border: none;
+    background-color: var(--secondary);
+}
+
+.mainRight .edit {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--secondary);
+}

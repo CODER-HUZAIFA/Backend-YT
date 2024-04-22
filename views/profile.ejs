@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/profile.css">
+    <title>Profile Page</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <p>Blogs</p>
+        </div>
+
+        <div class="leftNav">
+            <div class="icons">
+                <i class="ri-edit-2-line" id="write"></i>
+                <i class="ri-notification-2-line" id="notification"></i>
+            </div>
+            <div class="profileImage">
+                <img src="https://miro.medium.com/v2/resize:fill:64:64/0*yoIpY3AY05Z5ApC0" alt="Logo">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Body -->
+
+    <main class="main">
+        <div class="mainLeft">
+            <div>
+                <div class="profileName"><p><%= profileName %></p></div>
+                <div class="blogWritten">
+                    <% if (blogs.length > 0) { %>
+                        <% for (let i = 0; i < blogs.length; i++ ) { %>
+                                <div class="blogs">
+                                    <div class="img"></div>
+                                    <div class="title">Ansari Huzaifa</div>
+                                    <button class="btn">Read</button>
+                                </div>
+                        <% } %>
+                    <% } else { %>
+                        <div class="noBlogs">
+                            Any blogs is not available
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="mainRight">
+            <div>
+                <img src="https://miro.medium.com/v2/resize:fill:64:64/0*yoIpY3AY05Z5ApC0" alt="Ansari HUzaifa" class="img">
+                <div class="userName"><%= profileName %></div>
+                <div class="userFollowers">
+                    <% if (profileFollowers < 1000000) { %>
+                        <p><%= profileFollowers/1000 %>k &nbsp;Followers</p>
+                    <%} else if (profileFollowers => 1000000) {%>
+                        <p><%= profileFollowers/1000000 %>M</p>
+                    <% } %>
+                </div>
+                <div class="userDesc"><%= profileDesc %></div>
+                <% if (profileOwner == true) { %>
+                    <div class="rightBtn">
+                        <button class="follow">Follow</button>
+                        <button class="contact">Mail</button>
+                    </div>
+                <%} else {%>
+                    <div class="edit">Edit Profile</div>
+                <% } %>
+
+            </div>
+
+            <!-- <div class="rightBottom"></div> -->
+        </div>
+    </main>
+</body>
+
+</html>
