@@ -10,10 +10,15 @@ const registerHandle = async (req, res) => {
         username: req.body.username,
         password: req.body.password
     })
-
     res.redirect("/profile")
 }
 
+const userDataHandling = {
+    prfileName: req.body.username,
+    profileFollowers: 1000
+};
+
 export {
     registerHandle,
+    userDataHandling
 }
