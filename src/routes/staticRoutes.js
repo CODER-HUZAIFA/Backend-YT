@@ -1,18 +1,18 @@
 import { Router } from "express";
+import { userData } from "../middleware/user.middleware.js";
 
 const router = Router()
 
-router.get("/", (req, res) => {
-    if(req.cookies.uid) return res.redirect("/profile")
-    console.log(req)
+router.get("/", userData, (req, res) => {
+    console.log(req.user)
     res.render("index")
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", userData, (req, res) => {
     res.render("register")
 })
 
-router.get("/login", (req, res) => {
+router.get("/login", userData, (req, res) => {
     res.render("login")
 })
 

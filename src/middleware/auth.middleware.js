@@ -1,4 +1,4 @@
-import { getUser } from "../utils/auth.js";
+import { getUser } from "../utils/auth.jwt.js";
 
 const isLoggedIn = async (req, res, next) => {
     const userCookie = req.cookies.uid
