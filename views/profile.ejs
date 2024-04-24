@@ -56,7 +56,7 @@
                 <div class="userFollowers">
                     <% if (profileFollowers < 1000000) { %>
                         <p><%= profileFollowers/1000 %>k &nbsp;Followers</p>
-                    <%} else if (profileFollowers => 1000000) {%>
+                    <%} else if (profileFollowers >= 1000000) {%>
                         <p><%= profileFollowers/1000000 %>M</p>
                     <% } %>
                 </div>

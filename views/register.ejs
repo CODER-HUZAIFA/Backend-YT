@@ -12,13 +12,16 @@
 
 <body>
     <div class="formCont" id="formCont">
-        <form class="login" action="/profile/login" method="post">
+        <form class="login" action="/profile/register" method="post">
             <div class="form-head">
-                <h2>Login</h2>
+                <h2>Register You</h2>
             </div>
             <div>
                 <input type="text" name="username" id="username" pattern="[^' ']+" placeholder="Enter username" autocomplete="off"
                     required>
+            </div>
+            <div>
+                <input type="text" name="displayName" id="fullName" placeholder="Enter your FullName" autocomplete="off" required>
             </div>
             <div>
                 <input type="email" name="email" id="password" placeholder="Enter Email" autocomplete="off" required>
@@ -27,7 +30,10 @@
                 <input type="text" name="password" id="password" pattern="[^' ']+" placeholder="Enter password" autocomplete="off"
                     required>
             </div>
-            <a href="/register" class="haveAcc">Don't have an Account</a>
+            <div>
+                <textarea name="profileDesc" rows="3" cols="41" style="resize: none;" id="profileDesc" placeholder="Write short description about you" autocomplete="off" required></textarea>
+            </div>
+            <a href="/login" class="haveAcc">Already have an Account</a>
             <button type="submit">Register</button>
         </form>
     </div>

@@ -6,12 +6,27 @@ const userSchema = mongoose.Schema({
         require: true,
         unique: true,
     },
+    fullName: {
+        type: String,
+        require: true,
+        unique: true
+    },
     password: {
         type: String,
         require: true,
+        unique: true
     },
     email: {
+        type: String,
+        require: true,
+        unique: true
+    },
+    about: {
         type: String
+    },
+    profileDesc: {
+        type: String,
+        require: true,
     },
     followers: [
         {
@@ -19,14 +34,13 @@ const userSchema = mongoose.Schema({
             ref: "User"
         }
     ],
-    blogs: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Blog"
-    },
-    blogsCount: {
-        type: Number,
-        default: 0,
-    }
+    blogs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Blog"
+        },
+    ],
+    
 }, {timestamps: true});
 
 const User = mongoose.model("User", userSchema)

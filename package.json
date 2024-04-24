@@ -16,10 +16,12 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2",
     "nodemon": "^3.1.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "uuid": "^9.0.1"
   }
 }
