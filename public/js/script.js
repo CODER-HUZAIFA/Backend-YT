@@ -1,9 +1,9 @@
 
 let curs = document.querySelector(".cursor")
 
-document.addEventListener("mousemove", function(dets) {
-    curs.style.left = dets.x+"px"
-    curs.style.top = dets.y+"px"
+document.addEventListener("mousemove", function (dets) {
+    curs.style.left = dets.x + "px"
+    curs.style.top = dets.y + "px"
     // console.log(dets)
 })
 
@@ -48,9 +48,13 @@ topicsDis.forEach((e) => {
     topics += `<button class="btn">${e}</button>`
 })
 document.querySelector(".btn3-sec").innerHTML = document.querySelector(".btn3-sec").innerHTML + topics
+
+
 // Login
 const loginForm = document.querySelector(".login")
 const formCont = document.querySelector(".formCont")
+const loginHandle = document.querySelector(".formContLogin")
+
 document.querySelector(".loginBtn").addEventListener("click", (e) => {
     formCont.style.display = "flex"
 })
@@ -58,18 +62,17 @@ document.querySelector(".loginBtn").addEventListener("click", (e) => {
 document.querySelector(".cross").addEventListener("click", (e) => {
     formCont.style.display = "none"
 })
+document.querySelector("#cross").addEventListener("click", (e) => {
+    loginHandle.style.display = "none"
+})
 
-// loginForm.addEventListener("submit", (e) => {
-//     e.preventDefault()
-//     let formCont2 = formCont
-//     let username = document.querySelector("#username").value
-//     let passsword = document.querySelector("#password").value
-//     if (username == "" && passsword == ""){
-//         alert("Insert Value")
-//     }else{
-//         alert("Thanks")
-//         formCont2.style.display = "none"
-//     }
-//     username = ""
-//     passsword = "" 
-// });
+document.querySelector(".haveAcc").addEventListener("click", () => {
+    formCont.style.display = "none"
+    loginHandle.style.display = "flex"
+})
+
+
+document.querySelector(".notHaveAcc").addEventListener("click", () => {
+    loginHandle.style.display = "none"
+    document.querySelector("#formCont").style.display = "flex"
+})

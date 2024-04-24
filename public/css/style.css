@@ -32,8 +32,8 @@ html, body {
 }
 
 .formCont .login {
-    width: 400px;
-    height: 300px;
+    width: 500px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,9 +51,17 @@ html, body {
     margin-bottom: 20px;
 }
 
+.haveAcc{
+    font-size: 11px;
+    position: relative;
+    color: var(--secondary);
+    cursor: pointer;
+}
+
 .login input {
     margin-bottom: 10px;
     height: 40px;
+    width: 300px;
     border-radius: 10px;
     padding-left: 10px;
     border: 1px solid black;

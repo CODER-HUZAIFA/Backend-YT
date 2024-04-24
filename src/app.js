@@ -1,9 +1,8 @@
 import express from "express"
 import cookieParser from "cookie-parser"
-import { registerHandle, userDataHandling } from "./controllers/user.controllers.js"
+import { registerHandle } from "./controllers/user.controllers.js"
 import session from "express-session"
-import passport from "passport"
-import { initializingPassport, isAuthenticated } from "./passport.config.js"
+import User from "./models/user.models.js"
 
 const app = express()
 
@@ -17,9 +16,6 @@ app.use(session({
     saveUninitialized: false,
     secret: "backend"
 }))
-app.use(passport.initialize())
-app.use(passport.session())
-initializingPassport(passport)
 
 app.get("/", (req, res) => {
     res.render("index")
@@ -29,17 +25,16 @@ app.get("/login", (req, res) => {
     res.render("login")
 })
 
-app.post("/login", passport.authenticate("local", {
-    successRedirect: "/profile",
-    failureRedirect: "/"
-}))
-
 app.post("/register", registerHandle)
 
-
-
-app.get("/profile", isAuthenticated, (req, res) => {
-    res.render("profile", {userData: userDataHandling})
+app.get("/profile", (req, res) => {
+    res.render("profile", {
+        Blogs: [1, 2, 3],
+        profileName: User.findOne({username: "huzaifa"}),
+        profileFollowers: 10000,
+        profileDesc: "I am HUzaifa",
+        profileOwner: false
+    })
 
     console.log(req.body)
 })

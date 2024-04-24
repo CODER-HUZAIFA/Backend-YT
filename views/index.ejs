@@ -7,27 +7,51 @@
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
     rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Blogs</title>
 </head>
 
 <body>
     <div class="cursor"></div>
-    <div class="formCont">
+    <div class="formCont" id="formCont">
         <form class="login" action="/register" method="post">
             <div class="cross">
+                <i class="ri-arrow-drop-down-fill"></i>
+            </div>
+            <div class="form-head">
+                <h2>Register</h2>
+            </div>
+            <div>
+                <input type="text" name="username" id="username" placeholder="Enter username" autocomplete="off" required>
+            </div>
+            <div>
+                <input type="email" name="email" id="password" placeholder="Enter Email" autocomplete="off" required>
+            </div>
+            <div>
+                <input type="text" name="password" id="password" placeholder="Enter password" autocomplete="off" required>
+            </div>
+            <a class="haveAcc">Also have an account?</a>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <!-- Login Handling -->
+    <div class="formContLogin" id="login">
+        <form class="loginForm"  action="/login" method="post">
+            <div class="cross" id="cross">
                 <i class="ri-arrow-drop-down-fill"></i>
             </div>
             <div class="form-head">
                 <h2>Login</h2>
             </div>
             <div>
-                <input type="text" name="username" id="username" placeholder="Enter username" autocomplete="off">
+                <input type="email" name="email" id="password" placeholder="Enter Email" autocomplete="off" required>
             </div>
             <div>
-                <input type="text" name="password" id="password" placeholder="Enter password" autocomplete="off">
+                <input type="text" name="password" id="password" placeholder="Enter password" autocomplete="off" required>
             </div>
-            <button type="submit">Register</button>
+            <a class="notHaveAcc">Not have an account</a>
+            <button type="submit">Login</button>
         </form>
     </div>
     <main class="main">
