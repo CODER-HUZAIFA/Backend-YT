@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema({
             ref: "Blog"
         },
     ],
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Profile"
+    }
     
 }, {timestamps: true});
 

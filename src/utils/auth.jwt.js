@@ -11,7 +11,9 @@ function setUser(user) {
         fullName: user.fullName,
         profileDesc: user.profileDesc,
         email: user.email
-    }, secretKey)
+    }, secretKey, {
+        expiresIn: "10d"
+    })
 }
 
 function getUser(token) {

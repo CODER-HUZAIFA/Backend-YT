@@ -4,7 +4,7 @@ import { userData } from "../middleware/user.middleware.js";
 const router = Router()
 
 router.get("/", userData, (req, res) => {
-    console.log(req.user)
+    // console.log(req)
     res.render("index")
 });
 

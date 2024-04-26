@@ -17,7 +17,7 @@
 
         <div class="leftNav">
             <div class="icons">
-                <i class="ri-edit-2-line" id="write"></i>
+                <a href="/profile/<%= username %>/blog"><i class="ri-edit-2-line" id="write"></i></a>
                 <i class="ri-notification-2-line" id="notification"></i>
             </div>
             <div class="profileImage">
@@ -38,7 +38,7 @@
                                 <div class="blogs">
                                     <div class="img"></div>
                                     <div class="title">Ansari Huzaifa</div>
-                                    <button class="btn">Read</button>
+                                    <a href="/profile/<%= username %>/<%= Blogs.title %>"><button class="btn">Read</button></a>
                                 </div>
                         <% } %>
                     <% } else { %>
@@ -61,7 +61,7 @@
                     <% } %>
                 </div>
                 <div class="userDesc"><%= profileDesc %></div>
-                <% if (profileOwner == true) { %>
+                <% if (profileOwner == false) { %>
                     <div class="rightBtn">
                         <button class="follow">Follow</button>
                         <button class="contact">Mail</button>
@@ -75,6 +75,7 @@
             <!-- <div class="rightBottom"></div> -->
         </div>
     </main>
-</body>
 
+    <script src="../js/profile.js"></script>
+</body>
 </html>
