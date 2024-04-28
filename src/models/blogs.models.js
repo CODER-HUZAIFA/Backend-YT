@@ -9,10 +9,12 @@ const blogSchema = mongoose.Schema({
         type: String,
         require: true,
     },
-    views: {
-        type: Number,
-        default: 0
-    },
+    views: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        }
+    ],
     commentNumber: {
         type: Number,
         default: 0

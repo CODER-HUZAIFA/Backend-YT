@@ -5,10 +5,11 @@ import { profileCheck } from "../middleware/user.middleware.js"
 import { userDataToShow } from "../middleware/profile.middleware.js"
 import { blogSubmitHandler } from "../controllers/blog.controller.js"
 import { blogAuth, blogSee } from "../middleware/blog.middleware.js"
+import { viewsCount } from "../middleware/view.middleware.js"
 
 const router = Router()
 
-router.get("/:username/", isLoggedIn, userDataToShow, profileCheck, async (req, res, next) => {
+router.get("/:username", isLoggedIn, userDataToShow, profileCheck, async (req, res, next) => {
     const userData = await req.showUser.populate("blogs")
     const profileOwn = req.profileOwner
 
@@ -31,7 +32,7 @@ router.get("/:username/blogs", isLoggedIn, profileCheck, blogAuth, async (req, r
     })
 })
 
-router.get("/:username/blogs/:title", blogSee, (req, res) => {
+router.get("/:username/blogs/:title", viewsCount, blogSee, (req, res) => {
     res.render("blogSee", { blogData: req.blog, blogDesc: req.blog.desc })
 })
 

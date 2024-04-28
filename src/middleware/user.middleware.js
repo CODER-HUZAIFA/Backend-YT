@@ -3,7 +3,7 @@ const secretKey = "jbdsjdbsbfubfncrufrufcvefyvy"
 import User from "../models/user.models.js";
 
 const userData = async (req, res, next) => {
-    const loggedInUser = req.cookies.uid
+    const loggedInUser = req.cookies.uid;
     if(!loggedInUser) return next();
 
     const userData = jwt.verify(loggedInUser, secretKey)
