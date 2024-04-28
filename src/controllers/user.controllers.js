@@ -33,9 +33,9 @@ const loginHandle = async (req, res, next) => {
     if (!loginUser) return res.redirect("/")
 
     const token = setUser(loginUser)
-    res.cookie("uid", token, {domain: 'localhost', expires: new Date(Date.now() + 864000000)})
+    res.cookie("uid", token, { expires: new Date(Date.now() + 864000000)})
     const userProfile = await Profile.findOne({ profileName: username })
-    res.cookie("profile", userProfile.createdBy, {domain: 'localhost', expires: new Date(Date.now() + 864000000)})
+    res.cookie("profile", userProfile.createdBy, {expires: new Date(Date.now() + 864000000)})
     res.redirect("/profile/" + username)
 }
 
