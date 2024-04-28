@@ -4,8 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/profile.css">
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
     <title>Profile Page</title>
 </head>
 
@@ -17,7 +23,7 @@
 
         <div class="leftNav">
             <div class="icons">
-                <a href="/profile/<%= username %>/blog"><i class="ri-edit-2-line" id="write"></i></a>
+                <a href="/profile/<%= user.username %>/blogs"><i class="ri-edit-2-line" id="write"></i></a>
                 <i class="ri-notification-2-line" id="notification"></i>
             </div>
             <div class="profileImage">
@@ -31,44 +37,61 @@
     <main class="main">
         <div class="mainLeft">
             <div>
-                <div class="profileName"><p><%= profileName %></p></div>
+                <div class="profileName">
+                    <p>
+                        <%= profileName %>
+                    </p>
+                </div>
                 <div class="blogWritten">
                     <% if (Blogs.length > 0) { %>
-                        <% for (let i = 0; i < Blogs.length; i++ ) { %>
-                                <div class="blogs">
-                                    <div class="img"></div>
-                                    <div class="title">Ansari Huzaifa</div>
-                                    <a href="/profile/<%= username %>/<%= Blogs.title %>"><button class="btn">Read</button></a>
+                        <% Blogs.forEach((e) => {%>
+                            <div class="blogs" title="<%= e.title.split("_").join(" ") %>">
+                                <div class="img"></div>
+                                <div class="blogSpace">
+                                    <div class="title"><%= e.title.split("_").join(" ") %></div>
+                                    <a href="/profile/<%= username %>/blogs/<%= e.title %>">
+                                        <button class="btn">Read</button>
+                                    </a>
                                 </div>
-                        <% } %>
-                    <% } else { %>
-                        <div class="noBlogs">
-                            Any blogs is not available
-                        </div>
-                    <% } %>
+                            </div>
+                            <% }) %>
+                                <% } else { %>
+                                    <div class="noBlogs">
+                                        Any blogs is not available
+                                    </div>
+                                    <% } %>
                 </div>
             </div>
         </div>
         <div class="mainRight">
             <div>
-                <img src="https://miro.medium.com/v2/resize:fill:64:64/0*yoIpY3AY05Z5ApC0" alt="Ansari HUzaifa" class="img">
-                <div class="userName"><%= profileName %></div>
+                <img src="https://miro.medium.com/v2/resize:fill:64:64/0*yoIpY3AY05Z5ApC0" alt="Ansari HUzaifa"
+                    class="img">
+                <div class="userName">
+                    <%= profileName %>
+                </div>
                 <div class="userFollowers">
                     <% if (profileFollowers < 1000000) { %>
-                        <p><%= profileFollowers/1000 %>k &nbsp;Followers</p>
-                    <%} else if (profileFollowers >= 1000000) {%>
-                        <p><%= profileFollowers/1000000 %>M</p>
-                    <% } %>
+                        <p>
+                            <%= profileFollowers/1000 %>k &nbsp;Followers
+                        </p>
+                        <%} else if (profileFollowers>= 1000000) {%>
+                            <p>
+                                <%= profileFollowers/1000000 %>M
+                            </p>
+                            <% } %>
                 </div>
-                <div class="userDesc"><%= profileDesc %></div>
-                <% if (profileOwner == false) { %>
+                <div class="userDesc">
+                    <%= profileDesc %>
+                </div>
+                <% if (profileOwner==false) { %>
                     <div class="rightBtn">
                         <button class="follow">Follow</button>
                         <button class="contact">Mail</button>
                     </div>
-                <%} else {%>
-                    <div class="edit">Edit Profile</div>
-                <% } %>
+                    <%} else {%>
+                        <div class="edit">Edit Profile</div>
+                        <% } %>
 
             </div>
 
@@ -78,4 +101,5 @@
 
     <script src="../js/profile.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --primary: rgb(248, 246, 244);
+    --secondary: rgb(255, 102, 0);
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.mainForm {
+    width: 100%;
+    padding: 130px 70px;
+}
+
+.mainForm .blogForm {
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: var(--primary);
+}
+
+.blogForm #title {
+    width: 100%;
+    height: 50px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 0px 5px;
+    border: 0.2px solid black;
+}
+
+.blogForm #title:focus {
+    outline: none;
+}
+
+.contBtn {
+    margin-right: 50px;
+}
+
+.contBtn .btn {
+    padding: 7px;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--secondary);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.blogForm textarea {
+    width: 100%;
+    height: 500px;
+}
+
+.ck-editor__editable_inline:not(.ck-comment__input *) {
+    height: 500px;
+    /* overflow-y: auto; */
+}
+
+.ck-sticky-panel__content {
+    top: 70px !important;
+}
+
+.footer {
+    width: 100%;
+    height: 70px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(54, 53, 53);
+}
+
+.blogSee{
+    width: 100%;
+    padding: 130px 70px;
+}
+
+.mainBlogSee {
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: var(--primary);
+}
+
+.blogTitle {
+    font-size: 30px;
+    font-weight: 600;
+}
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>Blogs</title>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <p>Blogs</p>
+        </div>
+
+        <div class="leftNav">
+            <div class="contBtn">
+                <button class="btn" form="blogForm">Publish</button>
+            </div>
+            <div class="profileImage">
+                <img src="https://miro.medium.com/v2/resize:fill:64:64/0*yoIpY3AY05Z5ApC0" alt="Logo">
+            </div>
+        </div>
+    </nav>
+
+    <main class="mainForm">
+        <form action="/profile/<%= user.username %>/blog" method="post" class="blogForm" id="blogForm">
+            <input type="text" name="title" id="title" placeholder="Title:" required>
+            <textarea name="blog" id="blog" placeholder="Write your blog here:" required>
+    
+            </textarea>
+        </form>
+    </main>
+    <div class="footer">
+        <p>&copy; 2024 Blogs for enhance. All rights reserved.</p>
+    </div>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#blog'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    </script>
+</body>
+</html>

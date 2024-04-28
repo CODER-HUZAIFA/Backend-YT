@@ -4,15 +4,14 @@ import { registerHandle, loginHandle } from "../controllers/user.controllers.js"
 import { profileCheck } from "../middleware/user.middleware.js"
 import { userDataToShow } from "../middleware/profile.middleware.js"
 import { blogSubmitHandler } from "../controllers/blog.controller.js"
-import { userPopulate } from "../middleware/blogs.middleware.js"
+import { blogAuth, blogSee } from "../middleware/blog.middleware.js"
 
 const router = Router()
 
-router.get("/:username", isLoggedIn, userDataToShow, profileCheck, async (req, res, next) => {
-    // const userData = await userDataToShow(req, next)
-    const userData = await req.showUser
-    console.log(req.user)
+router.get("/:username/", isLoggedIn, userDataToShow, profileCheck, async (req, res, next) => {
+    const userData = await req.showUser.populate("blogs")
     const profileOwn = req.profileOwner
+
     res.render("profile", {
         username: userData.username,
         Blogs: userData.blogs,
@@ -20,19 +19,20 @@ router.get("/:username", isLoggedIn, userDataToShow, profileCheck, async (req, r
         profileFollowers: userData.followers.length,
         profileDesc: userData.profileDesc,
         profileOwner: profileOwn,
+        user: req.user,
     });
 
-    console.log(userData.blogs)
+    // console.log(userData.blogs)
 })
 
-router.get("/:username/blog", isLoggedIn, profileCheck, async (req, res, next) => {
-    res.render("blog", {
-        username: req.user.username,
+router.get("/:username/blogs", isLoggedIn, profileCheck, blogAuth, async (req, res, next) => {
+    res.render("blogWritten.ejs", {
+        user: req.user,
     })
 })
 
-router.get("/:username/blogs/:title", isLoggedIn, profileCheck, (req, res) => {
-
+router.get("/:username/blogs/:title", blogSee, (req, res) => {
+    res.render("blogSee", { blogData: req.blog, blogDesc: req.blog.desc })
 })
 
 router.post("/:username/blog", blogSubmitHandler)

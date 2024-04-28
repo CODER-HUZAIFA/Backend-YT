@@ -7,10 +7,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-body::-webkit-scrollbar{
-    display: none;
-}
-
 html, body {
     width: 100%;
     height: 100%;
@@ -111,9 +107,10 @@ html, body {
 }
 
 .mainLeft .blogWritten .blogs {
-    width: 150px;
-    height: 160px;
-    display: flex;
+    width: 180px;
+    min-height: max-content;
+    max-height: max-content;
+    display: flex;  
     align-items: center;
     flex-direction: column;
     margin: 15px 10px;
@@ -122,15 +119,32 @@ html, body {
 
 .blogs .img {
     width: 100%;
-    height: 60%;
+    height: 120px;
+    margin-bottom: 10px;
     background-color: rgb(87, 86, 86);
 }
 
+.blogSpace {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .blogs .title {
-    padding: 5px 0px;
-    font-size: 15px;
+    width: 180px;
+    padding: 0px 5px;
+    text-align: center;
+    font-size: 13px;
     color: black;
     font-weight: 450;
+    overflow: hidden; /* Hide overflowing text */
+    display: -webkit-box; /* Use the old flexbox syntax for compatibility */
+    -webkit-box-orient: vertical; /* Set the text to flow vertically */
+    -webkit-line-clamp: 2; /* Limit the text to 2 lines */
+    white-space: normal;
+    /* border: 1px solid black; */
 }
 
 .blogs .btn {
@@ -139,7 +153,8 @@ html, body {
     color: white;
     font-weight: 500;
     border-radius: 3px;
-    margin-bottom: 8px;
+    margin-top: 8px;
+    cursor: pointer;
     background-color: var(--secondary);
 }
 

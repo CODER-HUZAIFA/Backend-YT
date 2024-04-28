@@ -3,7 +3,8 @@ import User from "../models/user.models.js";
 
 const blogSubmitHandler = async (req, res) => {
     const user = await User.findOne({ username: req.params.username })
-    const { title, blog } = req.body;
+    const { blog } = req.body;
+    const title = req.body.title.split(" ").join("_")
     const blogCreated = await Blog.create({
         title: title,
         desc: blog,
@@ -12,7 +13,6 @@ const blogSubmitHandler = async (req, res) => {
     const userUpdated = await User.findOne({ _id: user._id })
     userUpdated.blogs.push(blogCreated._id);
     await userUpdated.save()
-    console.log(userUpdated)
 
     res.redirect("/")
 }

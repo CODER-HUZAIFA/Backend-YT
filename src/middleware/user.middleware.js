@@ -14,9 +14,11 @@ const userData = async (req, res, next) => {
 const profileCheck = async (req, res, next) => {
     const userCheck = await User.findOne({ username: req.params.username })
     if (!userCheck) return res.send("User is not Exist");
-    if(req.cookies.profile == userCheck._id) {
+    const userId = userCheck._id.toString()
+    if(req.cookies.profile == userId) {
         req.profileOwner = true;
         next();
+        return null
     };
     req.profileOwner = false;
     next();

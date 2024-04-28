@@ -3,7 +3,7 @@ import cookieParser from "cookie-parser"
 import session from "express-session"
 import userRoutes from "./routes/user.router.js"
 import staticRouter from './routes/staticRoutes.js'
-import { userData } from "./middleware/user.middleware.js"
+import { profileCheck, userData } from "./middleware/user.middleware.js"
 const app = express()
 
 app.use(express.json())

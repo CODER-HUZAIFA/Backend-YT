@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>Blog See</title>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <p>Blogs</p>
+        </div>
+
+        <div class="leftNav">
+            <div class="profileImage">
+                <img src="https://miro.medium.com/v2/resize:fill:64:64/0*yoIpY3AY05Z5ApC0" alt="Logo">
+            </div>
+        </div>
+
+    </nav>
+    <main class="blogSee">
+        <div class="mainBlogSee">
+            <div class="blogTitle">
+                <p> <%= blogData.title.split("_").join(" ") %> </p>
+            </div>
+            <div class="blogDesc">
+                
+            </div>
+        </div>
+    </main>
+    <script>
+        const blogDescData = <%- JSON.stringify(blogDesc) %>
+        document.querySelector(".blogDesc").innerHTML = blogDescData;
+    </script>
+</body>
+</html>
