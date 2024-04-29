@@ -4,7 +4,7 @@ import { registerHandle, loginHandle } from "../controllers/user.controllers.js"
 import { profileCheck } from "../middleware/user.middleware.js"
 import { userDataToShow } from "../middleware/profile.middleware.js"
 import { blogSubmitHandler } from "../controllers/blog.controller.js"
-import { blogAuth, blogSee } from "../middleware/blog.middleware.js"
+import { blogAuth, blogSee, blogViewsCount } from "../middleware/blog.middleware.js"
 
 const router = Router()
 
@@ -31,8 +31,8 @@ router.get("/:username/blogs", isLoggedIn, profileCheck, blogAuth, async (req, r
     })
 })
 
-router.get("/:username/blogs/:title", blogSee, (req, res) => {
-    res.render("blogSee", { blogData: req.blog, blogDesc: req.blog.desc })
+router.get("/:username/blogs/:title", blogSee, blogViewsCount, (req, res) => {
+    res.render("blogSee", { blogData: req.blog, blogDesc: req.blog.desc, blogViews: req.blog.views.length })
 })
 
 router.post("/:username/blog", blogSubmitHandler)

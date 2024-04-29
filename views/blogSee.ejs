@@ -24,11 +24,24 @@
     </nav>
     <main class="blogSee">
         <div class="mainBlogSee">
-            <div class="blogTitle">
-                <p> <%= blogData.title.split("_").join(" ") %> </p>
+            <div class="blogCover">
+                <div class="blogTitle">
+                    <p>Title: &nbsp; <%= blogData.title.split("_").join(" ") %> </p>
+                </div>
+                <div class="blogDesc"> </div>
             </div>
-            <div class="blogDesc">
-                
+            <div class="blogConfig">
+                <div class="blogViews">
+                    <% if(blogViews > 10000000) { %>
+                        <p> Views: <%= blogViews/1000000 %>M </p>
+                    <% } else if(blogViews > 100000 ){ %>
+                        <p> Views: <%= blogViews/100000 %>Lakh </p>
+                    <% } else if (blogViews > 1000) { %>
+                        <p> Views: <%= blogViews/1000 %>K </p>
+                    <% } else { %>
+                            <p> Views: <%= blogViews %> </p>
+                    <% } %>
+                </div>
             </div>
         </div>
     </main>

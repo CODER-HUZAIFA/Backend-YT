@@ -40,6 +40,13 @@ const userSchema = mongoose.Schema({
             ref: "Blog"
         },
     ],
+    blogsView: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Blog",
+            default: []
+        },
+    ],
     profile: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Profile"
