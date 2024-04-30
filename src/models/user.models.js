@@ -40,6 +40,13 @@ const userSchema = mongoose.Schema({
             ref: "Blog"
         },
     ],
+    comment: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment",
+            default: []
+        }
+    ],
     blogsView: [
         {
             type: mongoose.Schema.Types.ObjectId,

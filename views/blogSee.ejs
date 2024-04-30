@@ -22,13 +22,17 @@
         </div>
 
     </nav>
+
+    
     <main class="blogSee">
         <div class="mainBlogSee">
             <div class="blogCover">
                 <div class="blogTitle">
                     <p>Title: &nbsp; <%= blogData.title.split("_").join(" ") %> </p>
                 </div>
-                <div class="blogDesc"> </div>
+                <div class="blogDesc">
+                    <%- blogDesc %>
+                </div>
             </div>
             <div class="blogConfig">
                 <div class="blogViews">
@@ -44,10 +48,36 @@
                 </div>
             </div>
         </div>
+        <div class="comment">
+            
+            <% if(isLoggedIn) { %>
+                <div class="addComment">
+                    <div class="commentHead">
+                        Add Comment
+                    </div>
+                    <form action="/profile/<%= user.username %>/blogs/<%= blogData.title %>/comment" method="post" class="commentForm">
+                        <textarea type="text" name="comment" id="comment" required></textarea>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+            <% } %>
+            <div class="commentCont">
+                <h1>Comments -- (<%= comment.length %>)</h1>
+                <% comment.forEach((comm) => { %>
+                    <div class="commentCard">
+                        <div class="userInfo">
+                            <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" alt="User">
+                            <p class="username">
+                                <pre><%= comm.name %></pre>
+                            </p>
+                        </div>
+                        <div class="commentDesc">
+                            <%= comm.comment %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
     </main>
-    <script>
-        const blogDescData = <%- JSON.stringify(blogDesc) %>
-        document.querySelector(".blogDesc").innerHTML = blogDescData;
-    </script>
 </body>
 </html>

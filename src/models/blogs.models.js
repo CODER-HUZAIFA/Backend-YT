@@ -16,10 +16,12 @@ const blogSchema = mongoose.Schema({
             default: []
         },
     ],
-    commentNumber: {
-        type: Number,
-        default: 0
-    },
+    comment: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ],
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         require: true,

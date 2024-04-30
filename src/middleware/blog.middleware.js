@@ -15,19 +15,22 @@ const blogAuth = async (req, res, next) => {
 
 const blogSee = async (req, res, next) => {
     const userParams = await User.findOne({ username: req.params.username }).populate("blogs")
-    const  blogParams = await Blog.findOne({ title: req.params.title })
+    const  blogParams = await Blog.findOne({ title: req.params.title }).populate("createdBy").populate("comment")
 
     if(!userParams || !blogParams) return res.status(404).send(" Username or blog is not Exist. <br> Error ocuring ")
-
-
     userParams.blogs.forEach((e) => {
         if(e.title == blogParams.title) {
             req.blog = blogParams;
             return next()
         }
     })
-
     return;
+}
+
+const blogSeeComment = async (req, res, next) => {
+    const  blogParams = await Blog.findOne({ title: req.params.title }).populate("createdBy").populate("comment")
+    req.blog = blogParams
+    return next();
 }
 
 const blogViewsCount = async (req, res, next) => {
@@ -55,8 +58,27 @@ const blogViewsCount = async (req, res, next) => {
 }
 
 
+const isLoggedInBlog = async (req, res, next) => {
+    const userCookie = req.cookies.uid
+    if(!userCookie) {
+        req.loggedIn = false
+        return next()
+    }
+    const user = getUser(userCookie)
+
+    req.loggedIn = true
+    const userData = await User
+        .findOne({username: user.username})
+        .populate("blogs")
+    req.user = userData;
+    next();
+}
+
+
 export {
     blogAuth,
     blogSee,
-    blogViewsCount
+    blogViewsCount,
+    isLoggedInBlog,
+    blogSeeComment,
 } 
