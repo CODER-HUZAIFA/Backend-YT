@@ -1,7 +1,7 @@
 import { Profile } from "../models/profile.models.js";
 import User from "../models/user.models.js"
 import { setUser } from "../utils/auth.jwt.js";
-
+import path from "path"
 
 const registerHandle = async (req, res) => {
     const user = await User.findOne({ username: req.body.username })
@@ -14,6 +14,7 @@ const registerHandle = async (req, res) => {
         password: req.body.password,
         email: req.body.email,
         profileDesc: req.body.profileDesc,
+        profileImage: req.file.filename,
     });
 
     const userProfile = await Profile.create({
@@ -41,5 +42,5 @@ const loginHandle = async (req, res, next) => {
 
 export {
     registerHandle,
-    loginHandle
+    loginHandle,
 }

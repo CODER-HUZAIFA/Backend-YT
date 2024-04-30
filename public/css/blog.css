@@ -164,6 +164,7 @@ body::-webkit-scrollbar{
 .commentCard .userInfo img {
     width: 50px;
     height: 50px;
+    border-radius: 50%;
 }
 
 .commentDesc {
@@ -224,3 +225,4 @@ body::-webkit-scrollbar{
     cursor: pointer;
     text-decoration: none;
 }
+

@@ -3,10 +3,8 @@ import User from "../models/user.models.js";
 import { getUser } from "../utils/auth.jwt.js";
 
 const blogAuth = async (req, res, next) => {
-    const paramUser = req.params.username;
-    const loggedInUser = req.user;
     const profileOwn = req.profileOwner;
-
+    console.log(profileOwn)
     if (profileOwn == false) return res.redirect(`/profile/${req.user.username}/blogs`) 
     next()
 }

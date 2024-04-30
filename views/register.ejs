@@ -12,31 +12,45 @@
 
 <body>
     <div class="formCont" id="formCont">
-        <form class="login" action="/profile/register" method="post">
+        <form class="login" action="/profile/register" method="post" enctype="multipart/form-data">
             <div class="form-head">
                 <h2>Register You</h2>
             </div>
             <div>
-                <input type="text" name="username" id="username" pattern="[^' ']+" placeholder="Enter username" autocomplete="off"
-                    required>
+                <input type="text" name="username" id="username" pattern="[^' ']+" placeholder="Enter username"
+                    autocomplete="off" required>
             </div>
             <div>
-                <input type="text" name="displayName" id="fullName" placeholder="Enter your FullName" autocomplete="off" required>
+                <input type="text" name="displayName" id="fullName" placeholder="Enter your FullName" autocomplete="off"
+                    required>
             </div>
             <div>
                 <input type="email" name="email" id="password" placeholder="Enter Email" autocomplete="off" required>
             </div>
             <div>
-                <input type="text" name="password" id="password" pattern="[^' ']+" placeholder="Enter password" autocomplete="off"
-                    required>
+                <input type="text" name="password" id="password" pattern="[^' ']+" placeholder="Enter password"
+                    autocomplete="off" required>
             </div>
             <div>
-                <textarea name="profileDesc" rows="3" cols="41" style="resize: none;" id="profileDesc" placeholder="Write short description about you" autocomplete="off" required></textarea>
+                <textarea name="profileDesc" rows="3" cols="41" style="resize: none;" id="profileDesc"
+                    placeholder="Write short description about you" autocomplete="off" required></textarea>
+            </div>
+            <div class="fileDiv">
+                <label for="file" id="fileLabel" class="profileImageLabel">Upload your profile Image</label>
+                <input type="file" name="profileImage" id="file" required>
             </div>
             <a href="/login" class="haveAcc">Already have an Account</a>
             <button type="submit">Register</button>
         </form>
     </div>
+    <script>
+        document.getElementById('file').addEventListener('change', function () {
+            let fileName = this.files[0].name;
+            let displayName = document.getElementById('fileLabel')
+            // displayName.style.width = "300px";
+            displayName.innerText = 'Selected File: ' + fileName;   
+        });
+    </script>
 </body>
 
 </html>

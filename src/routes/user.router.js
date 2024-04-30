@@ -6,8 +6,20 @@ import { userDataToShow } from "../middleware/profile.middleware.js"
 import { blogSubmitHandler } from "../controllers/blog.controller.js"
 import { blogAuth, blogSee, blogSeeComment, blogViewsCount, isLoggedInBlog } from "../middleware/blog.middleware.js"
 import { commentHandler } from "../controllers/comment.controller.js"
+import multer from "multer"
 
 const router = Router()
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        return cb(null, "public/images/profileImage/")
+    },
+    filename: function (req, file, cb) {
+        return cb(null, `${Date.now()}-${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage })
 
 router.get("/:username/", isLoggedIn, userDataToShow, profileCheck, async (req, res, next) => {
     const userData = await req.showUser.populate("blogs")
@@ -22,8 +34,6 @@ router.get("/:username/", isLoggedIn, userDataToShow, profileCheck, async (req, 
         profileOwner: profileOwn,
         user: req.user,
     });
-
-    // console.log(userData.blogs)
 })
 
 router.get("/:username/blogs", isLoggedIn, profileCheck, blogAuth, async (req, res, next) => {
@@ -44,7 +54,7 @@ router.get("/:username/blogs/:title", isLoggedInBlog, blogSee, blogViewsCount, (
 })
 router.post("/:username/blogs/:title/comment", isLoggedInBlog, blogSeeComment, commentHandler)
 router.post("/:username/blog", blogSubmitHandler)
-router.post("/register", registerHandle)
+router.post("/register", upload.single("profileImage"), registerHandle)
 router.post("/login", loginHandle)
 
 export default router
