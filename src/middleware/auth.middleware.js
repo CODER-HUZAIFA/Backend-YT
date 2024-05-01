@@ -10,6 +10,7 @@ const isLoggedIn = async (req, res, next) => {
     const userData = await User
         .findOne({username: user.username})
         .populate("blogs")
+        .populate("following")
     req.user = userData;
     next();
 }

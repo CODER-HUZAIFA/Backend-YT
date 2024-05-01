@@ -1,4 +1,5 @@
 import { Blog } from "../models/blogs.models.js";
+import { Comment } from "../models/comments.models.js";
 import User from "../models/user.models.js";
 import { getUser } from "../utils/auth.jwt.js";
 
@@ -15,10 +16,15 @@ const blogSee = async (req, res, next) => {
     const userParams = await User.findOne({ username: req.params.username }).populate("blogs")
     const  blogParams = await Blog.findOne({ title: req.params.title }).populate("createdBy").populate("comment")
 
+
     if(!userParams || !blogParams) return res.status(404).send(" Username or blog is not Exist. <br> Error ocuring ")
+
+    const blogComment = await Comment.find({ blog: blogParams._id }).populate("createdBy")
+    
     userParams.blogs.forEach((e) => {
         if(e.title == blogParams.title) {
             req.blog = blogParams;
+            req.comment = blogComment;
             return next()
         }
     })
@@ -80,7 +86,12 @@ const findBlog = async (req, res, next) => {
         .populate("comment")
         .populate("createdBy")
 
+    const user = await User.find();
+
     req.allBlog = allBlog;
+    
+    const spliceUser = user.splice(0, 5)
+    req.allUser = spliceUser;
     next()
 }
 

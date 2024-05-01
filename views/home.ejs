@@ -54,9 +54,26 @@
                 </div>
             <% }) %>
         </div>
-        <div class="forYou">
-
-        </div>
+        <section class="follow">
+            <div class="followHead">
+                <p>You want to follow them</p>
+            </div>
+            <div class="userCont">
+                <% allUser.forEach((userF) => { %>
+                    <a href="/profile/<%= userF.username %>">
+                        <div class="user">
+                            <div class="userImgName">
+                                <img src="../images/profileImage/<%= userF.profileImage %>" alt="<%= userF.fullName %>">
+                                <p class="username"><%= userF.fullName %></p>
+                            </div>
+                            <div class="aboutUser">
+                                <%= userF.profileDesc %>
+                            </div>
+                        </div>
+                    </a>
+                <% }) %> 
+            </div>
+        </section>
     </main>
 
 </body>

@@ -202,7 +202,7 @@ html, body {
     margin-top: 20px;
 }
 
-.rightBtn > * {
+.rightBtn .follow {
     color: white;
     font-weight: 500;
     padding: 5px 8px;
@@ -211,6 +211,19 @@ html, body {
     margin: 2px;
     border: none;
     background-color: var(--secondary);
+}
+
+.followed {
+    color: var(--secondary);
+    font-weight: 500;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 2px;
+    border: none;
+    border: 2px solid;
+    border-color: var(--secondary);
+    background-color: white;
 }
 
 .mainRight .edit {

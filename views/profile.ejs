@@ -54,44 +54,50 @@
                                     </a>
                                 </div>
                             </div>
-                            <% }) %>
-                                <% } else { %>
-                                    <div class="noBlogs">
-                                        Any blogs is not available
-                                    </div>
-                                    <% } %>
+                    <% }) %>
+                    <% } else { %>
+                        <div class="noBlogs">
+                            Any blogs is not available
+                        </div>
+                    <% } %>
                 </div>
             </div>
         </div>
         <div class="mainRight">
             <div>
-                <img src="../images/profileImage/<%= user.profileImage %>" alt="<%= user.username %>" class="img"> 
+                <img src="../images/profileImage/<%= profileImage %>" alt="<%= profileName %>" class="img"> 
                 <div class="userName">
                     <%= profileName %>
                 </div>
                 <div class="userFollowers">
-                    <% if (profileFollowers < 1000000) { %>
-                        <p>
-                            <%= profileFollowers/1000 %>k &nbsp;Followers
-                        </p>
-                        <%} else if (profileFollowers>= 1000000) {%>
-                            <p>
-                                <%= profileFollowers/1000000 %>M
-                            </p>
-                            <% } %>
+                    <% if(profileFollowers > 10000000) { %>
+                        <p> <%= profileFollowers/1000000 %>M Followers</p>
+                    <% } else if(profileFollowers > 100000 ){ %>
+                        <p> <%= profileFollowers/100000 %>Lakh Followers</p>
+                    <% } else if (profileFollowers > 1000) { %>
+                        <p> <%= profileFollowers/1000 %>K Followers</p>
+                    <% } else { %>
+                            <p> <%= profileFollowers %> Followers</p>
+                    <% } %>
                 </div>
                 <div class="userDesc">
                     <%= profileDesc %>
                 </div>
                 <% if (profileOwner==false) { %>
-                    <div class="rightBtn">
-                        <button class="follow">Follow</button>
-                        <button class="contact">Mail</button>
-                    </div>
-                    <%} else {%>
-                        <div class="edit">Edit Profile</div>
-                        <% } %>
-
+                    <% if(follower) { %>
+                        <div class="rightBtn">
+                            <button class="followed">Followed</button>
+                        </div>
+                    <% } else { %>
+                        <div class="rightBtn">
+                            <form action="/profile/<%= user.username %>/follow/<%= username %>" method="post">
+                                <button class="follow">Follow</button>
+                            </form>
+                        </div>
+                    <% } %>
+                <%} else {%>
+                    <div class="edit">Edit Profile</div>
+                <% } %>
             </div>
 
             <!-- <div class="rightBottom"></div> -->

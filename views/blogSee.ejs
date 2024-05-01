@@ -43,7 +43,7 @@
                     <% } else if (blogViews > 1000) { %>
                         <p> Views: <%= blogViews/1000 %>K </p>
                     <% } else { %>
-                            <p> Views: <%= blogViews %> </p>
+                        <p> Views: <%= blogViews %> </p>
                     <% } %>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <% comment.forEach((comm) => { %>
                     <div class="commentCard">
                         <div class="userInfo">
-                            <img src="../images/profileImage/<%= user.profileImage %>" alt="<%= user.username %>" class="img">
+                            <img src="../images/profileImage/<%= comm.createdBy.profileImage %>" alt="<%= comm.username %>" class="img">
                             <p class="username">
                                 <%= comm.name %>
                             </p>
