@@ -38,6 +38,12 @@ const userSchema = mongoose.Schema({
             ref: "User"
         }
     ],
+    following: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
     blogs: [
         {
             type: mongoose.Schema.Types.ObjectId,

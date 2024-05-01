@@ -22,6 +22,10 @@ const blogSchema = mongoose.Schema({
             ref: "Comment"
         }
     ],
+    blogImage: {
+        type: String,
+        require: true
+    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         require: true,

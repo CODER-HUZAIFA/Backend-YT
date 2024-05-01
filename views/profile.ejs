@@ -46,7 +46,7 @@
                     <% if (Blogs.length > 0) { %>
                         <% Blogs.forEach((e) => {%>
                             <div class="blogs" title="<%= e.title.split("_").join(" ") %>">
-                                <div class="img"></div>
+                                <img src="../images/blogThumbnail/<%= e.blogImage %>" class="img" alt="<%= e.title.split("_").join(" ") %>">
                                 <div class="blogSpace">
                                     <div class="title"><%= e.title.split("_").join(" ") %></div>
                                     <a href="/profile/<%= username %>/blogs/<%= e.title %>">

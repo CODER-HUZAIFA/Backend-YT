@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <title>Blogs</title>
 </head>
+
 <body>
     <nav class="nav">
         <div class="logo">
@@ -26,10 +28,15 @@
     </nav>
 
     <main class="mainForm">
-        <form action="/profile/<%= user.username %>/blog" method="post" class="blogForm" id="blogForm">
+        <form action="/profile/<%= user.username %>/blog" method="post" class="blogForm" id="blogForm"
+            enctype="multipart/form-data">
             <input type="text" name="title" id="title" placeholder="Title:" required>
+            <div class="fileDiv">
+                <label for="file" id="fileLabel" class="profileImageLabel">Upload thumbnail of Blog</label>
+                <input type="file" name="profileImage" id="file" required>
+            </div>
             <textarea name="blog" id="blog" placeholder="Write your blog here:" required>
-    
+
             </textarea>
         </form>
     </main>
@@ -38,6 +45,13 @@
     </div>
     <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
     <script>
+
+        document.getElementById('file').addEventListener('change', function () {
+            let fileName = this.files[0].name;
+            let displayName = document.getElementById('fileLabel')
+            displayName.innerText = 'Selected File: ' + fileName;
+        });
+
         ClassicEditor
             .create(document.querySelector('#blog'))
             .then(editor => {
@@ -48,4 +62,5 @@
             })
     </script>
 </body>
+
 </html>

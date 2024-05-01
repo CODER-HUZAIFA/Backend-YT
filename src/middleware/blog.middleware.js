@@ -73,10 +73,23 @@ const isLoggedInBlog = async (req, res, next) => {
 }
 
 
+const findBlog = async (req, res, next) => {
+
+    const allBlog = await Blog.find()
+        .populate("createdBy")
+        .populate("comment")
+        .populate("createdBy")
+
+    req.allBlog = allBlog;
+    next()
+}
+
+
 export {
     blogAuth,
     blogSee,
     blogViewsCount,
     isLoggedInBlog,
     blogSeeComment,
+    findBlog,
 } 

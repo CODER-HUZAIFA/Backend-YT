@@ -7,6 +7,7 @@ import { blogSubmitHandler } from "../controllers/blog.controller.js"
 import { blogAuth, blogSee, blogSeeComment, blogViewsCount, isLoggedInBlog } from "../middleware/blog.middleware.js"
 import { commentHandler } from "../controllers/comment.controller.js"
 import multer from "multer"
+import { fileUploadMulter } from "../utils/multer.js"
 
 const router = Router()
 
@@ -52,8 +53,12 @@ router.get("/:username/blogs/:title", isLoggedInBlog, blogSee, blogViewsCount, (
         user: req.user,
     })
 })
+
+const multerBlog = fileUploadMulter("public/images/blogThumbnail/")
+const blogThumbnailupload = multer({ storage: multerBlog })
+
 router.post("/:username/blogs/:title/comment", isLoggedInBlog, blogSeeComment, commentHandler)
-router.post("/:username/blog", blogSubmitHandler)
+router.post("/:username/blog", blogThumbnailupload.single("profileImage"), blogSubmitHandler)
 router.post("/register", upload.single("profileImage"), registerHandle)
 router.post("/login", loginHandle)
 

@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --primary: rgb(248, 246, 244);
+    --secondary: rgb(255, 102, 0);
+}
+
+.nav{
+    width: 100vw;
+    height: 70px;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    z-index: 110;
+    border-bottom: 1px solid black;
+}
+
+.nav .logo {
+    margin-left: 100px;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.nav .leftNav {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.nav .icons {
+    margin-right: 20px;
+}
+
+.nav #write {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.nav #notification {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.nav .icons {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+}
+
+.nav .profileImage img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+main.home {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    padding: 80px 0px 0px 50px;
+}
+
+.home .allBlogs {
+    width: 70%;
+    height: max-content;
+    padding: 10px 10px;
+}
+
+.home .forYou {
+    width: 30%;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.allBlogs .blog {
+    width: 100%;
+    height: 230px;
+    margin: 5px 0px;
+    border: 1px solid rgb(154, 154, 154);
+}
+
+.blog .createdBy {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    border-bottom: 1px solid black;
+}
+
+.blog .createdBy .img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.blog .createdBy .username {
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.blog .desc {
+    width: 100%;
+    height: 130px;
+    display: flex;
+}
+
+.blog .desc .space {
+    width: 70%;
+}
+
+.blog .blogTitle {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 10px 0px 10px;
+    line-height: 23px;
+    overflow: hidden; /* Hide overflowing text */
+    display: -webkit-box; /* Use the old flexbox syntax for compatibility */
+    -webkit-box-orient: vertical; /* Set the text to flow vertically */
+    -webkit-line-clamp: 2; /* Limit the text to 2 lines */
+    white-space: normal;
+}
+
+.blog .blogDesc {
+    /* padding: 10px 10px; */
+    padding: 10px 10px 0px 10px;
+    font-size: 13px;
+    color: rgb(74, 74, 74);
+    overflow: hidden; /* Hide overflowing text */
+    display: -webkit-box; /* Use the old flexbox syntax for compatibility */
+    -webkit-box-orient: vertical; /* Set the text to flow vertically */
+    -webkit-line-clamp: 3; /* Limit the text to 2 lines */
+    white-space: normal;
+}
+
+.blog .desc .imgCont {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgCont img {
+    border-radius: 10px;
+    width: 170px;
+    height: 110px;
+}
+
+.blog .btnCont {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.blog .btnCont .btn {
+    border: none;
+    padding: 4px 6px;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: var(--secondary);
+}
