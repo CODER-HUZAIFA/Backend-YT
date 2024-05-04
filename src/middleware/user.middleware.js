@@ -26,13 +26,16 @@ const profileCheck = async (req, res, next) => {
 
 const followingCheck = async (req, res, next) => {
     if(req.profileOwner) return next()
+
     req.user.following.forEach((foll) => {
         if (foll._id.toString() == req.showUser._id.toString()) {
             req.following = true;
-            next()
-            return;
+            next
+            return null;
         }
     })
+    next()
+    return null;
 }
 
 export {

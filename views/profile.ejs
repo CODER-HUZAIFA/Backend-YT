@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" media="(max-width: 400px)" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/profile.css">
     <style>
         body::-webkit-scrollbar {
@@ -27,14 +28,64 @@
                 <i class="ri-notification-2-line" id="notification"></i>
             </div>
             <div class="profileImage">
-                <img src="../images/profileImage/<%= user.profileImage %>" alt="<%= user.username %>" class="img">
+                <a href="/profile/<%= user.username %>/">
+                    <img src="../images/profileImage/<%= user.profileImage %>" alt="<%= user.username %>" class="img">
+                </a>
             </div>
         </div>
+
+
+        <!-- <button class="navBtn">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </button>
+        <div class="sidebar">
+
+        </div> -->
     </nav>
 
     <!-- Main Body -->
 
     <main class="main">
+        <div class="mainRightMobile">
+            <div>
+                <img src="../images/profileImage/<%= profileImage %>" alt="<%= profileName %>" class="img"> 
+                <div class="userName">
+                    <%= profileName %>
+                </div>
+                <div class="userFollowers">
+                    <% if(profileFollowers > 10000000) { %>
+                        <p> <%= profileFollowers/1000000 %>M Followers</p>
+                    <% } else if(profileFollowers > 100000 ){ %>
+                        <p> <%= profileFollowers/100000 %>Lakh Followers</p>
+                    <% } else if (profileFollowers > 1000) { %>
+                        <p> <%= profileFollowers/1000 %>K Followers</p>
+                    <% } else { %>
+                            <p> <%= profileFollowers %> Followers</p>
+                    <% } %>
+                </div>
+                <div class="userDesc">
+                    <%= profileDesc %>
+                </div>
+                <% if (profileOwner==false) { %>
+                    <div class="rightBtn">
+                        <form action="/profile/<%= user.username %>/follow/<%= username %>" method="post">
+                            <% if (userDataToShow.followers.indexOf(user._id) == -1) { %>
+                                <button class="follow">Follow</button>
+                            <% } else { %>
+                                <button class="followed">Unfollow</button>
+                            <% } %>
+                        </form>
+                    </div>
+                <%} else {%>
+                    <div class="edit">Edit Profile</div>
+                <% } %>
+            </div>
+            <!-- <div class="rightBottom"></div> -->
+        </div>
+
+        
         <div class="mainLeft">
             <div>
                 <div class="profileName">
@@ -84,22 +135,19 @@
                     <%= profileDesc %>
                 </div>
                 <% if (profileOwner==false) { %>
-                    <% if(follower) { %>
-                        <div class="rightBtn">
-                            <button class="followed">Followed</button>
-                        </div>
-                    <% } else { %>
-                        <div class="rightBtn">
-                            <form action="/profile/<%= user.username %>/follow/<%= username %>" method="post">
+                    <div class="rightBtn">
+                        <form action="/profile/<%= user.username %>/follow/<%= username %>" method="post">
+                            <% if (userDataToShow.followers.indexOf(user._id) == -1) { %>
                                 <button class="follow">Follow</button>
-                            </form>
-                        </div>
-                    <% } %>
+                            <% } else { %>
+                                <button class="followed">Unfollow</button>
+                            <% } %>
+                        </form>
+                    </div>
                 <%} else {%>
                     <div class="edit">Edit Profile</div>
                 <% } %>
             </div>
-
             <!-- <div class="rightBottom"></div> -->
         </div>
     </main>

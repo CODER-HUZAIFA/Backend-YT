@@ -17,6 +17,10 @@ html, body {
     --secondary: rgb(255, 102, 0);
 }
 
+.nav .navBtn {
+    display: none;
+}
+
 .nav{
     width: 100vw;
     height: 70px;
@@ -49,6 +53,8 @@ html, body {
 .nav #write {
     font-size: 25px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 .nav #notification {
@@ -158,6 +164,10 @@ html, body {
     margin-top: 8px;
     cursor: pointer;
     background-color: var(--secondary);
+}
+
+.mainRightMobile {
+    display: none;
 }
 
 .noBlogs {

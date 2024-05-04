@@ -12,6 +12,10 @@ html, body {
     height: 100%;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 :root{
     --primary: rgb(248, 246, 244);
     --secondary: rgb(255, 102, 0);

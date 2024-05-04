@@ -1,2 +1,1 @@
-const date = new Date()
-console.log(Date(Date.now() + 90000000))
+const navBtn = document.querySelector(".navBtn")

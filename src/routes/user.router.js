@@ -37,8 +37,13 @@ router.get("/:username/", isLoggedIn, userDataToShow, profileCheck, followingChe
         profileOwner: profileOwn,
         profileImage: userData.profileImage,
         follower: req.following,
+        userDataToShow: userData,
         user: req.user,
     });
+})
+
+router.get("/edit/:username", (req, res) => {
+    res.send("Profile Edit")
 })
 
 router.get("/:username/blogs", isLoggedIn, profileCheck, blogAuth, async (req, res, next) => {
