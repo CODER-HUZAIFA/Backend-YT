@@ -4,6 +4,11 @@ import session from "express-session"
 import userRoutes from "./routes/user.router.js"
 import staticRouter from './routes/staticRoutes.js'
 import * as path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 import { profileCheck, userData } from "./middleware/user.middleware.js"
 const app = express()
 
