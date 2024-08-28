@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "backend",
   "type": "module",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon src/index.js"
+    "dev": "npx nodemon src/index.js",
+    "start": "node src/app.js"
   },
   "author": "",
   "license": "ISC",
